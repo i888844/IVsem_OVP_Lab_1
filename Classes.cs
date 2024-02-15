@@ -13,10 +13,12 @@ namespace Lab._1
             public double A { get; private set; }
             public double B { get; private set; }
 
+            static ComplexNumber() { }
+
             public ComplexNumber()
             {
-                A = 0.0;
-                B = 0.0;
+                A = 1.0;
+                B = 1.0;
             }
 
             public ComplexNumber(double valueA, double valueB)
@@ -46,6 +48,8 @@ namespace Lab._1
         public class ComplexNumberOperator
         {
             private ComplexNumber[] complexNumbers;
+
+            static ComplexNumberOperator() { }
 
             public ComplexNumberOperator()
             {
