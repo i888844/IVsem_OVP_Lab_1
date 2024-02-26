@@ -10,38 +10,42 @@ namespace Lab._1
     {
         public class ComplexNumber
         {
-            public double A { get; private set; }
-            public double B { get; private set; }
+            private double a;
+            private double b;
 
             static ComplexNumber() { }
 
             public ComplexNumber()
             {
-                A = 1.0;
-                B = 1.0;
+                a = 1.0;
+                b = 1.0;
             }
 
             public ComplexNumber(double valueA, double valueB)
             {
-                A = valueA;
-                B = valueB;
+                a = valueA;
+                b = valueB;
             }
 
             public ComplexNumber(ComplexNumber sourceComplexNumber)
             {
                 if (this != sourceComplexNumber)
                 {
-                    A = sourceComplexNumber.A;
-                    B = sourceComplexNumber.B;
+                    a = sourceComplexNumber.a;
+                    b = sourceComplexNumber.b;
                 }
             }
 
             ~ComplexNumber() { }
 
+            public double A { get { return a; } set { a = value; } }
+
+            public double B { get { return b; } set { b = value; } }
+            
             public override string ToString()
             {
-                if (A >= 0) return $"{A} + {B}i";
-                else return $"{A} - {Math.Abs(B)}i";
+                if (a >= 0) return $"{a} + {b}i";
+                else return $"{a} - {Math.Abs(b)}i";
             }
         }
 
@@ -90,7 +94,7 @@ namespace Lab._1
                 get { return complexNumbers; }
                 set
                 {
-                    if (value.Length != 2)
+                    if (value?.Length != 2)
                     {
                         throw new ArgumentException("Массив должен иметь два элемента.");
                     }
@@ -138,6 +142,11 @@ namespace Lab._1
                 double resultB = (complexNumbers[0].B * complexNumbers[1].A - complexNumbers[0].A * complexNumbers[1].B) / denominator;
 
                 return new ComplexNumber(resultA, resultB);
+            }
+
+            public override string ToString()
+            {
+                return $"[ {complexNumbers[0]}, {complexNumbers[1]} ]";
             }
         }
     }
