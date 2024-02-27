@@ -19,6 +19,7 @@ namespace Lab._1
         public Form1()
         {
             InitializeComponent();
+            button2.Enabled = false;
         }
 
         private ErrorProvider errorProvider = new ErrorProvider();
@@ -27,7 +28,9 @@ namespace Lab._1
         private double valueTextBoxFirstB = 0.0;
         private double valueTextBoxSecondA = 0.0;
         private double valueTextBoxSecondB = 0.0;
-        private List<string> complexNumbersOfZ = new List<string>();
+
+        private ComplexNumberOperator Z = new ComplexNumberOperator();
+        //private List<string> complexNumbersOfZ = new List<string>();
 
         private void textBoxFirstA_Click(object sender, EventArgs e)
         {
@@ -83,7 +86,7 @@ namespace Lab._1
         {
             try
             {
-                ComplexNumberOperator Z = new ComplexNumberOperator(valueTextBoxFirstA, valueTextBoxFirstB, valueTextBoxSecondA, valueTextBoxSecondB);
+                Z = new ComplexNumberOperator(valueTextBoxFirstA, valueTextBoxFirstB, valueTextBoxSecondA, valueTextBoxSecondB);
 
                 string result = "";
 
@@ -117,9 +120,9 @@ namespace Lab._1
                         throw new InvalidOperationException("Выбрана недопустимая операция.");
                 }
 
-                complexNumbersOfZ.Clear();
-                complexNumbersOfZ.Add(Z.СomplexNumbers[0].ToString());
-                complexNumbersOfZ.Add(Z.СomplexNumbers[1].ToString());
+                //complexNumbersOfZ.Clear();
+                //complexNumbersOfZ.Add(Z.СomplexNumbers[0].ToString());
+                //complexNumbersOfZ.Add(Z.СomplexNumbers[1].ToString());
                 errorProvider.Clear();
             }
             catch (Exception ex)
@@ -138,6 +141,7 @@ namespace Lab._1
             {
                 if (valuesIsNumber())
                 {
+                    button2.Enabled = true;
                     operating();
                 }
                 else
@@ -157,20 +161,36 @@ namespace Lab._1
             {
                 if (comboBox2.SelectedIndex == 0 || comboBox2.SelectedIndex == 1)
                 {
-                    MessageBox.Show($"Z[{comboBox2.SelectedIndex}] = {complexNumbersOfZ[comboBox2.SelectedIndex]}",
+                    MessageBox.Show(
+                        $"Z[{comboBox2.SelectedIndex}] = {Z[comboBox2.SelectedIndex].ToString()}",
                         $"Комплексное число с индексом {comboBox2.SelectedIndex}",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
-                }
-                else
-                {
-                    errorProvider.SetError(button2, "Значение индекса комплексного числа выбрано некорректно");
                 }
             }
             catch (Exception ex)
             {
                 errorProvider.SetError(button2, $"Произошла ошибка: {ex.Message}");
             }
+
+            //try
+            //{
+            //    if (comboBox2.SelectedIndex == 0 || comboBox2.SelectedIndex == 1)
+            //    {
+            //        MessageBox.Show($"Z[{comboBox2.SelectedIndex}] = {complexNumbersOfZ[comboBox2.SelectedIndex]}",
+            //            $"Комплексное число с индексом {comboBox2.SelectedIndex}",
+            //            MessageBoxButtons.OK,
+            //            MessageBoxIcon.Information);
+            //    }
+            //    else
+            //    {
+            //        errorProvider.SetError(button2, "Значение индекса комплексного числа выбрано некорректно");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    errorProvider.SetError(button2, $"Произошла ошибка: {ex.Message}");
+            //}
         }
     }
 }

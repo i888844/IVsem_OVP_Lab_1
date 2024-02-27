@@ -98,7 +98,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(293, 128);
+            this.button1.Location = new System.Drawing.Point(293, 127);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(217, 37);
             this.button1.TabIndex = 4;
@@ -115,7 +115,7 @@
             "Вычитание",
             "Умножение",
             "Деление"});
-            this.comboBox1.Location = new System.Drawing.Point(17, 128);
+            this.comboBox1.Location = new System.Drawing.Point(17, 127);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(268, 37);
             this.comboBox1.TabIndex = 5;
